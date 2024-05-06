@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,8 +32,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+// _ here is naming convention for global variable / not part of the syntax
   double _heightSliderValue = 170;
   double _weightSliderValue = 70;
+  var _bmi = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +78,22 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             SizedBox(height: 8,),
-            ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.favorite), label: Text("Calculate BMI"))
+            Text("Your BMI is $_bmi"),
+            SizedBox(height: 8,),
+            ElevatedButton.icon(onPressed: (){
+              // weight / (height in meter)^2
+              var tempBmi = _weightSliderValue / pow((_heightSliderValue/100),2);
+              print(tempBmi);
+              // It means assign tempBmi into _bmi
+             // _bmi = tempBmi;
+
+              // Assign tempBmi into _bmi AND REFRESH THE PART OF UI THAT HAS THE VALUE
+              setState(() {
+                _bmi = tempBmi.round();
+              });
+
+
+            }, icon: Icon(Icons.favorite), label: Text("Calculate BMI"))
           ],
         )
     );
