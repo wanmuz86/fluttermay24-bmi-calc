@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
@@ -42,22 +42,22 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("BMI Calculator"),
+          title: const Text("BMI Calculator"),
           backgroundColor: Colors.red,
         ),
         body: Column(
           children: [
-            Text(
+            const Text(
               "BMI Calculator",
               style: TextStyle(fontSize: 32, color: Colors.red),
             ),
-            SizedBox(height: 8,),
-            Text("We care about your health", style: TextStyle(fontSize: 24),),
-            SizedBox(height: 8,),
+            const SizedBox(height: 8,),
+            const Text("We care about your health", style: TextStyle(fontSize: 24),),
+            const SizedBox(height: 8,),
             Image.network("https://www.cdc.gov/healthyweight/images/assessing/bmi-adult-fb-600x315.jpg"),
-            SizedBox(height: 8,),
-            Text("Height ( ${_heightSliderValue.round()} cm)", style: TextStyle(fontSize: 20),),
-            SizedBox(height: 8,),
+            const SizedBox(height: 8,),
+            Text("Height ( ${_heightSliderValue.round()} cm)", style: const TextStyle(fontSize: 20),),
+            const SizedBox(height: 8,),
             Slider(
               value: _heightSliderValue,
               max: 200,
@@ -67,8 +67,8 @@ class _HomePageState extends State<HomePage> {
                 });
               },
             ),
-            SizedBox(height: 8,),
-            Text("Weight (${_weightSliderValue.round()}kg)", style: TextStyle(fontSize: 20),),
+            const SizedBox(height: 8,),
+            Text("Weight (${_weightSliderValue.round()}kg)", style: const TextStyle(fontSize: 20),),
             Slider(
               value: _weightSliderValue,
               max: 180,
@@ -78,10 +78,10 @@ class _HomePageState extends State<HomePage> {
                 });
               },
             ),
-            SizedBox(height: 8,),
-            _bmi != 0 ? Text("Your BMI is $_bmi") : SizedBox(),
-            _message != "" ? Text(_message) : SizedBox(),
-            SizedBox(height: 8,),
+            const SizedBox(height: 8,),
+            _bmi != 0 ? Text("Your BMI is $_bmi") : const SizedBox(),
+            _message != "" ? Text(_message) : const SizedBox(),
+            const SizedBox(height: 8,),
             ElevatedButton.icon(onPressed: (){
               // weight / (height in meter)^2
               var tempBmi = _weightSliderValue / pow((_heightSliderValue/100),2);
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
               });
 
 
-            }, icon: Icon(Icons.favorite), label: Text("Calculate BMI"))
+            }, icon: const Icon(Icons.favorite), label: const Text("Calculate BMI"))
           ],
         )
     );
