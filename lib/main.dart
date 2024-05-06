@@ -111,6 +111,13 @@ class _HomePageState extends State<HomePage> {
                 _message = tempMessage;
               });
 
+              // setState(() {
+              //   _bmi = 0;
+              //   _message = "";
+              //   _heightSliderValue = 170;
+              //   _weightSliderValue = 70;
+              // });
+
 
             }, icon: const Icon(Icons.favorite), label: const Text("Calculate BMI"))
           ],
