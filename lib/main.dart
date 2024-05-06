@@ -82,7 +82,12 @@ class _HomePageState extends State<HomePage> {
             _bmi != 0 ? Text("Your BMI is $_bmi") : const SizedBox(),
             _message != "" ? Text(_message) : const SizedBox(),
             const SizedBox(height: 8,),
-            ElevatedButton.icon(onPressed: (){
+            ElevatedButton.icon(
+                style: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                  backgroundColor: MaterialStateProperty.all(Colors.red), // Set the background color to red
+                ),
+                onPressed: (){
               // weight / (height in meter)^2
               var tempBmi = _weightSliderValue / pow((_heightSliderValue/100),2);
               print(tempBmi);
