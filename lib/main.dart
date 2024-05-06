@@ -79,8 +79,8 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             SizedBox(height: 8,),
-            Text("Your BMI is $_bmi"),
-            Text(_message),
+            _bmi != 0 ? Text("Your BMI is $_bmi") : SizedBox(),
+            _message != "" ? Text(_message) : SizedBox(),
             SizedBox(height: 8,),
             ElevatedButton.icon(onPressed: (){
               // weight / (height in meter)^2
@@ -89,7 +89,6 @@ class _HomePageState extends State<HomePage> {
               // It means assign tempBmi into _bmi
              // _bmi = tempBmi;
               var tempMessage = "";
-
               if (tempBmi < 18.5){
                 tempMessage = "You are underweight";
               }
