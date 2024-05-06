@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> {
   double _heightSliderValue = 170;
   double _weightSliderValue = 70;
   var _bmi = 0;
+  var _message ="";
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +80,7 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 8,),
             Text("Your BMI is $_bmi"),
+            Text(_message),
             SizedBox(height: 8,),
             ElevatedButton.icon(onPressed: (){
               // weight / (height in meter)^2
@@ -86,10 +88,28 @@ class _HomePageState extends State<HomePage> {
               print(tempBmi);
               // It means assign tempBmi into _bmi
              // _bmi = tempBmi;
+              var tempMessage = "";
+
+              if (tempBmi < 18.5){
+                tempMessage = "You are underweight";
+              }
+              else if (tempBmi < 25){
+                tempMessage = "You are normal";
+              }
+              else if (tempBmi < 30){
+                tempMessage = "You are overweight";
+              }
+              else if (tempBmi < 35) {
+                tempMessage = "You are obese";
+              }
+              else {
+                tempMessage = "You are extremely obese";
+              }
 
               // Assign tempBmi into _bmi AND REFRESH THE PART OF UI THAT HAS THE VALUE
               setState(() {
                 _bmi = tempBmi.round();
+                _message = tempMessage;
               });
 
 
