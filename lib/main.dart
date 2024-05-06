@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'BMI Calculatoe',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -29,6 +29,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  double _heightSliderValue = 170;
+  double _weightSliderValue = 70;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,12 +46,37 @@ class _HomePageState extends State<HomePage> {
               "BMI Calculator",
               style: TextStyle(fontSize: 32, color: Colors.red),
             ),
-            Text("We care about your health"),
+            SizedBox(height: 8,),
+            Text("We care about your health", style: TextStyle(fontSize: 24),),
+            SizedBox(height: 8,),
             Image.network("https://www.cdc.gov/healthyweight/images/assessing/bmi-adult-fb-600x315.jpg"),
-            Text("Height (170cm)"),
-            Text("Weight (70kg)"),
+            SizedBox(height: 8,),
+            Text("Height ( ${_heightSliderValue.round()} cm)", style: TextStyle(fontSize: 20),),
+            SizedBox(height: 8,),
+            Slider(
+              value: _heightSliderValue,
+              max: 200,
+              onChanged: (double value) {
+                setState(() {
+                  _heightSliderValue = value;
+                });
+              },
+            ),
+            SizedBox(height: 8,),
+            Text("Weight (${_weightSliderValue.round()}kg)", style: TextStyle(fontSize: 20),),
+            Slider(
+              value: _weightSliderValue,
+              max: 180,
+               onChanged: (double value) {
+                setState(() {
+                  _weightSliderValue = value;
+                });
+              },
+            ),
+            SizedBox(height: 8,),
             ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.favorite), label: Text("Calculate BMI"))
           ],
-        ));
+        )
+    );
   }
 }
